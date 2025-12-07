@@ -1,4 +1,4 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -25,11 +25,24 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IB
         void Start()
         {
                 cam = Camera.main;
+                if (modelGOs == null || modelGOs.Length == 0)
+                {
+                        return;
+                }
                 for (int i = 0; i < modelGOs.Length; i++)//Hide all  units models
                 {
                         modelGOs[i].SetActive(false);
                 }
-                modelGOs[ID-1].SetActive(true);//Show the model corresponding to the selected card ID. 
+                
+                if (ID <= 8)
+                {
+                        modelGOs[ID - 1].SetActive(true);//Show the model corresponding to the selected card ID. 
+                }
+                else
+                {
+                        spellCastingRange.SetActive(false);
+                }
+
         }
 
         // Update is called once per frame
@@ -139,7 +152,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IB
                         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
                         RaycastHit[] hits = Physics.RaycastAll(ray);
 
-                        imgGold.DOLocalMove(imgGold.localPosition + new Vector3(0,50,0), 0.5f)
+                        imgGold.DOLocalMove(imgGold.localPosition + new Vector3(0, 50, 0), 0.5f)
                                 .OnComplete(() => { UseCurrentCard(hits); });
                 }
                 else//Card state
@@ -184,7 +197,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IB
                 for (int i = 0; i < hits.Length; i++)
                 {
                         RaycastHit hit = hits[i];
-                        if(hit.collider != null && hit.collider.tag == "Plane")
+                        if (hit.collider != null && hit.collider.tag == "Plane")
                         {
                                 //If its on the plane then create the unit
                                 GameController.Instance.CreatUnit(ID, hit.point);
