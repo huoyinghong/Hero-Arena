@@ -4,6 +4,8 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
+using static Unit;
+
 public class GameController : MonoBehaviour
 {
         public static GameController Instance;
@@ -81,9 +83,19 @@ public class GameController : MonoBehaviour
         /// <param name="id">unit id</param>
         /// <param name="pos">creation position</param>
         /// <param name="isBlue">If unit belongs to blue side</param>
-        public void CreatUnit(int id, Vector3 pos, bool isBlue=true)
+        public void CreatUnit(int id, Vector3 pos, bool isBlue = true)
         {
-                GameObject go = Instantiate(unitGOs[id-1]);
+                GameObject go = Instantiate(unitGOs[id - 1]);
                 go.transform.position = pos;
+        }
+
+        /// <summary>
+        /// A unit get its default target(left tower or right tower)
+        /// </summary>
+        /// <param name="unit"></param>
+        /// <param name="isBlue"></param>
+        public void UnitGetTargetPosi(Unit unit, bool isBlue)
+        {
+
         }
 }
