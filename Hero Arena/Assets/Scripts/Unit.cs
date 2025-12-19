@@ -9,7 +9,7 @@ using UnityEngine.AI;
 public class Unit : MonoBehaviour
 {
         public UnitInfo unitInfo;
-        public bool isBlue;
+        public bool isOrange;
         public bool hasTarget; //If the unit has a target then attact, otherwise move to enemy base
         public int currentHP;
         public bool isDead;
@@ -18,8 +18,8 @@ public class Unit : MonoBehaviour
         public Animator animator;
         public NavMeshAgent meshAgent;
         public Unit defaultTarget;//Default target enemy base;
-        public List<Unit> targetsList = new List<Unit>();//List of  units that is avaliable for the unit to attack(within the attack range)
-        public List<Unit> attackersList = new List<Unit>();//List of  units that is attacking the unit
+        public List<Unit> targetsList = new List<Unit>();//List of  units that is avaliable for this unit to attack(within the attack range)
+        public List<Unit> attackersList = new List<Unit>();//List of  units that is attacking this unit
 
 
 
@@ -49,7 +49,7 @@ public class Unit : MonoBehaviour
                 }
                 else//if the unit doesnt have target
                 {
-                        GameController.Instance.UnitGetTargetPosi(this, isBlue);
+                        GameController.Instance.UnitGetTargetPosi(this, isOrange);
                         if (defaultTarget != null)
                         {
                                 //Move to default target
@@ -91,6 +91,21 @@ public class Unit : MonoBehaviour
         {
                 animator.SetBool("IsMoving", true);
                 animator.SetBool("IsAttacking", false);
+
+        }
+
+        /// <summary>
+        /// Taking damage
+        /// </summary>
+        /// <param name="dmgValue"></param>
+        /// <param name="attacker">The unit that is attacking this unit</param>
+        public void TakeDamage(int dmgValue, Unit attacker)
+        {
+
+        }
+
+        protected virtual void Die(Unit attacker)
+        {
 
         }
 

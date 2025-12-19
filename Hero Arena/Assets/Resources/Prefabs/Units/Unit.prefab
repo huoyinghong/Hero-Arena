@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8122190699018546498}
   - component: {fileID: 6133210573718949009}
   - component: {fileID: 1530599556243253990}
-  - component: {fileID: 8846523473645951950}
+  - component: {fileID: 7983592541563121293}
   m_Layer: 0
   m_Name: Unit
   m_TagString: Untagged
@@ -105,7 +105,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &8846523473645951950
+--- !u!114 &7983592541563121293
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,6 +114,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 7803009127254916226}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5786bcf87741ba543b19028efc4486e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c5b8773d5881c8469eed005c5fde974, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unit
+  m_EditorClassIdentifier: Assembly-CSharp::Character
+  isBlue: 0
+  hasTarget: 0
+  currentHP: 0
+  isDead: 0
+  target: {fileID: 0}
+  animator: {fileID: 0}
+  meshAgent: {fileID: 0}
+  defaultTarget: {fileID: 0}
+  targetsList: []
+  attackersList: []

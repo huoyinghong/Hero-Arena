@@ -11,6 +11,18 @@ public class Building : Unit
     // Update is called once per frame
     void Update()
     {
-        
+                if (isDead) return;
+
+                BuildingAttack();
     }
+
+        private void BuildingAttack()
+        {
+
+        }
+
+        protected override void Die(Unit attacker)
+        {
+                base.Die(attacker);
+        }
 }
