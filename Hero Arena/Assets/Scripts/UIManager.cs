@@ -81,7 +81,6 @@ public class UIManager : MonoBehaviour
                 if (currentCardNum < maxCardNum)
                 {
                         MoveCardToBoard(currentCardNum);
-                        currentCardNum++;
                 }
 
         }
@@ -104,6 +103,7 @@ public class UIManager : MonoBehaviour
         /// </summary>
         private void CompleteMoveTween(Transform t)
         {
+                currentCardNum++;
                 CreateNewCard();
                 t.GetComponent<Card>().SetInitPosi();
         }

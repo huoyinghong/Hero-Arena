@@ -125,7 +125,7 @@ public class GameController : MonoBehaviour
         /// <param name="isOrange"></param>
         public void UnitGetTargetPosi(Unit unit, bool isOrange)
         {
-                Building[] buildings = isOrange? orangeBuildings : purpleBuildings;
+                Building[] buildings = isOrange? purpleBuildings : orangeBuildings;
                 if (buildings[0]==null)//The base has destroyed
                 {
                         return;

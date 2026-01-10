@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.Collections;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.AI;
@@ -13,7 +14,6 @@ public class Unit : MonoBehaviour
         public bool hasTarget; //If the unit has a target then attact, otherwise move to enemy base
         public int currentHP;
         public bool isDead;
-
         public Unit target;//Target that unit attack to
         public Animator animator;
         public NavMeshAgent meshAgent;
@@ -109,6 +109,23 @@ public class Unit : MonoBehaviour
 
         }
 
+        public virtual void AttackAnimationEvent()
+        {
+                if (hasTarget)//make the unit face to its target when attacking
+                {
+                        transform.LookAt(target.transform);
+                }
+                else
+                {
+                        transform.LookAt(defaultTarget.transform);
+                }
+                if (target != null)
+                {
+                        target.TakeDamage(unitInfo.damage, this);//target loses hp
+
+                }
+        }
+
         public struct UnitInfo
         {
                 public int ID;
@@ -117,7 +134,7 @@ public class Unit : MonoBehaviour
                 public int hp;
                 public float attackRange;
                 public float speed;
-                public float damage;
+                public int damage;
                 public bool canCreateAnywhere;
         }
 }
