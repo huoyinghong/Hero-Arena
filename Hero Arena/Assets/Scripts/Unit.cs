@@ -29,6 +29,7 @@ public class Unit : MonoBehaviour
         {
                 animator = GetComponentInChildren<Animator>();
                 meshAgent = GetComponent<NavMeshAgent>();
+                GetComponentInChildren<SphereCollider>().radius = unitInfo.attackRange;
         }
 
         // Update is called once per frame
@@ -122,8 +123,77 @@ public class Unit : MonoBehaviour
                 if (target != null)
                 {
                         target.TakeDamage(unitInfo.damage, this);//target loses hp
-
                 }
+        }
+
+        /// <summary>
+        /// Detect unit within attack range and target it
+        /// </summary>
+        /// <param name="other"></param>
+        private void OnTriggerEnter(Collider other)
+        {
+                if (other.CompareTag("Unit"))
+                {
+                        Unit unit = other.GetComponentInParent<Unit>();
+                        if (isOrange != unit.isOrange)
+                        {
+                                targetsList.Add(unit);//Add target to unit's target list
+                                unit.AddAttackerToList(this);//Add unit itself to target's attacker list 
+                                ClearDeadUnitInList();
+                                SetTarget();
+                        }
+                }
+        }
+
+        /// <summary>
+        /// When current unit is attacking to another unit, the other unit needs to add 
+        /// current unit into its attackersList. So this function will called by the other unit
+        /// </summary>
+        /// <param name="unit"></param>
+        public void AddAttackerToList(Unit unit)
+        {
+               attackersList.Add(unit);
+        }
+
+        /// <summary>
+        /// Remove the dead units in the target list
+        /// </summary>
+        private void ClearDeadUnitInList()
+        {
+                List<int> temp = new List<int>();//this array holds the index of the units that need to be removed
+                for (int i = 0; i < targetsList.Count; i++)
+                {
+                        if (targetsList[i] == null)
+                        {
+                                temp.Add(i);
+                        }
+                }
+
+                for (int i = 0;i < temp.Count; i++)
+                {
+                        targetsList.RemoveAt(temp[i]);
+                }
+        }
+
+        /// <summary>
+        /// Set attack target, with priority given to the nearest target
+        /// </summary>
+        private void SetTarget()
+        {
+                float closestDistance = 9999;
+                Unit u = null;
+                //Go through all the units within attack range and find the nearest one
+                for (int i = 0; i < targetsList.Count;i++)
+                {
+                        float distance = Vector3.Distance(transform.position, targetsList[i].transform.position);
+                        if (distance < closestDistance)
+                        {
+                                closestDistance = distance;
+                                u = targetsList[i];
+                        }
+                }
+                target = u;
+                hasTarget = true;
         }
 
         public struct UnitInfo
