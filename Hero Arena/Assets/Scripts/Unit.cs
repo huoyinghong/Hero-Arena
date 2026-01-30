@@ -20,6 +20,7 @@ public class Unit : MonoBehaviour
         public Unit defaultTarget;//Default target enemy base;
         public List<Unit> targetsList = new List<Unit>();//List of  units that is avaliable for this unit to attack(within the attack range)
         public List<Unit> attackersList = new List<Unit>();//List of  units that is attacking this unit
+        protected Collider[] colliders; 
 
 
 
@@ -30,6 +31,7 @@ public class Unit : MonoBehaviour
                 animator = GetComponentInChildren<Animator>();
                 meshAgent = GetComponent<NavMeshAgent>();
                 GetComponentInChildren<SphereCollider>().radius = unitInfo.attackRange;
+                colliders = GetComponentsInChildren<Collider>();
         }
 
         // Update is called once per frame
@@ -45,7 +47,7 @@ public class Unit : MonoBehaviour
                         }
                         else
                         {
-                                ResetTarget();
+                                ResetTarget(target);
                         }
                 }
                 else//if the unit doesnt have target
@@ -82,11 +84,22 @@ public class Unit : MonoBehaviour
 
         }
 
-        private void ResetTarget()
+        private void ResetTarget(Unit unit)
         {
-
-
+                targetsList.Remove(unit);
+                ClearDeadUnitInList();
+                if (targetsList.Count > 0)
+                {
+                        SetTarget();
+                }
+                else//No unit within attack range.  attack buildings
+                {
+                        hasTarget = false;
+                        target = null;
+                        GameController.Instance.UnitGetTargetPosi(this, this.isOrange);
+                }
         }
+
 
         protected virtual void UnitBehaviour()
         {
@@ -102,11 +115,20 @@ public class Unit : MonoBehaviour
         /// <param name="attacker">The unit that is attacking this unit</param>
         public void TakeDamage(int dmgValue, Unit attacker)
         {
-
+                currentHP -= dmgValue;
+                Mathf.Clamp(currentHP, 0, unitInfo.hp);
+                if (currentHP <= 0)
+                {
+                        Die(attacker);
+                }
         }
+
+
 
         protected virtual void Die(Unit attacker)
         {
+                isDead = true;
+                animator.SetTrigger("Die");
 
         }
 
@@ -141,6 +163,23 @@ public class Unit : MonoBehaviour
                                 unit.AddAttackerToList(this);//Add unit itself to target's attacker list 
                                 ClearDeadUnitInList();
                                 SetTarget();
+                        }
+                }
+        }
+
+
+        /// <summary>
+        /// Detect unit within attack range, reset target and search for new target
+        /// </summary>
+        /// <param name="other"></param>
+        private void OnTriggerExit(Collider other)
+        {
+                if (other.CompareTag("Unit"))
+                {
+                        Unit unit = other.GetComponentInParent<Unit>();
+                        if (isOrange != unit.isOrange && target == unit)//If current target is the unit then reset target. if not ignore
+                        {
+                                ResetTarget(unit);
                         }
                 }
         }
@@ -194,6 +233,18 @@ public class Unit : MonoBehaviour
                 }
                 target = u;
                 hasTarget = true;
+        }
+
+        /// <summary>
+        /// Enable or disable unit's collider
+        /// </summary>
+        /// <param name="state"></param>
+        protected void SetColliders(bool state)
+        {
+                for (int i = 0; i < colliders.Length; i++)
+                {
+                        colliders[i].enabled = state;
+                }
         }
 
         public struct UnitInfo
