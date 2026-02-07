@@ -32,6 +32,7 @@ public class Unit : MonoBehaviour
                 meshAgent = GetComponent<NavMeshAgent>();
                 GetComponentInChildren<SphereCollider>().radius = unitInfo.attackRange;
                 colliders = GetComponentsInChildren<Collider>();
+                currentHP = unitInfo.hp;
         }
 
         // Update is called once per frame
@@ -103,6 +104,10 @@ public class Unit : MonoBehaviour
 
         protected virtual void UnitBehaviour()
         {
+                if (meshAgent.enabled)
+                {
+                        meshAgent.isStopped = false;
+                }
                 animator.SetBool("IsMoving", true);
                 animator.SetBool("IsAttacking", false);
 
@@ -129,7 +134,10 @@ public class Unit : MonoBehaviour
         {
                 isDead = true;
                 animator.SetTrigger("Die");
-
+                if (meshAgent.enabled)
+                {
+                        meshAgent.isStopped = true;
+                }
         }
 
         public virtual void AttackAnimationEvent()

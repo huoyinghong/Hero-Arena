@@ -24,13 +24,13 @@ public class GameController : MonoBehaviour
                 unitInfos = new List<UnitInfo>()
         {
             new UnitInfo(){ ID = 1, name = "Elf Archer", cost = 3, attackRange = 6, hp = 10, damage = 2, speed = 1},
-            new UnitInfo(){ ID = 2, name = "Healing Angel", cost = 4, attackRange = 6, hp = 10, damage = 1, speed = 1},
-            new UnitInfo(){ ID = 3, name = "Three Headed Wolf", cost = 6, attackRange = 4, hp = 30, damage = 5, speed = 1},
+            new UnitInfo(){ ID = 2, name = "Healing Angel", cost = 4, attackRange = 5, hp = 10, damage = 1, speed = 1},
+            new UnitInfo(){ ID = 3, name = "Three Headed Wolf", cost = 6, attackRange = 3, hp = 30, damage = 5, speed = 1},
             new UnitInfo(){ ID = 4, name = "Fallen Angel", cost = 6, attackRange = 5, hp = 10, damage = 6, speed = 2},
-            new UnitInfo(){ ID = 5, name = "Lava Monster", cost = 8, attackRange = 4, hp = 30, damage = 4, speed = 1},
+            new UnitInfo(){ ID = 5, name = "Lava Monster", cost = 8, attackRange = 3, hp = 30, damage = 4, speed = 1},
             new UnitInfo(){ ID = 6, name = "Archer Brothers", cost = 5, attackRange = 8, hp = 10, damage = 2, speed = 1},
-            new UnitInfo(){ ID = 7, name = "Bear", cost = 7, attackRange = 3, hp = 10, damage = 8, speed = 2},
-            new UnitInfo(){ ID = 8, name = "Death", cost = 6, attackRange = 4, hp = 10, damage = 7, speed = 1},
+            new UnitInfo(){ ID = 7, name = "Bear", cost = 7, attackRange = 2, hp = 10, damage = 8, speed = 2},
+            new UnitInfo(){ ID = 8, name = "Death", cost = 6, attackRange = 3, hp = 10, damage = 7, speed = 1},
             new UnitInfo(){ ID = 9, name = "Plaguebringer", cost = 4, attackRange = 3, damage = 1, speed = 1, canCreateAnywhere = true},
             new UnitInfo(){ ID = 10, name = "Fireball", cost = 4, attackRange = 4, damage = 3, speed = 18, canCreateAnywhere = true},
             new UnitInfo(){ ID = 11, name = "Shipwreck Monster", cost = 0, attackRange = 2, hp = 2, damage = 1, speed = 1},
@@ -145,5 +145,10 @@ public class GameController : MonoBehaviour
                         //if the index building is not dead set default target to the building
                         unit.defaultTarget = buildings[index];
                 }
+        }
+
+        public void EnableBase(bool isOrange)
+        {
+
         }
 }

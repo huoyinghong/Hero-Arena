@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
 
         private void CreateUnits()
         {
-                GameController.Instance.CreatUnit(Random.Range(1,1),transform.position, false);
+                GameController.Instance.CreatUnit(Random.Range(1,9),transform.position, false);
         }
 
 }
