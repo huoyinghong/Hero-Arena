@@ -3,7 +3,7 @@ using UnityEngine;
 public class Building : Unit
 {
         public bool isBase;
-        private float attackSpeed = 1.4f;
+        private float attackCD = 1.4f;
         private float attackTimer;
         public Transform characterTrans;
         public GameObject[] buildingGOs;
@@ -12,30 +12,36 @@ public class Building : Unit
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         protected override void Start()
         {
+                unitInfo = GameController.Instance.unitInfos[12];
                 base.Start();
-                if (isBase)//Not active the base at start
+                if (isBase)
                 {
-                        SetColliders(false);
+                        SetColliders(false);//Disable the base at start
+                        unitInfo.attackRange += 1;
+                        unitInfo.damage += 1;
+                        unitInfo.hp += 100;
                 }
         }
 
         // Update is called once per frame
         void Update()
-    {
-                if (isDead) return;
-
+        {
+                if (isDead)
+                {
+                        return;
+                }
                 BuildingAttack();
-    }
+        }
 
         private void BuildingAttack()
         {
-                if (Time.time - attackTimer >= attackSpeed)
+                if (Time.time-attackTimer >= attackCD)
                 {
                         attackTimer = Time.time;
-                        if (hasTarget && target != null )
+                        if (hasTarget && target != null)
                         {
                                 animator.SetBool("IsAttacking", true);
-                                characterTrans.LookAt(new Vector3(target.transform.position.x, 
+                                characterTrans.LookAt(new Vector3(target.transform.position.x,
                                         characterTrans.position.y, target.transform.position.z));
                                 target.TakeDamage(unitInfo.damage, this);
                         }
@@ -60,5 +66,9 @@ public class Building : Unit
                         //Enable the base when one of the building is destoryed
                         GameController.Instance.EnableBase(isOrange);
                 }
+        }
+
+        public override void AttackAnimationEvent()
+        {
         }
 }

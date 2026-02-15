@@ -134,9 +134,34 @@ public class Unit : MonoBehaviour
         {
                 isDead = true;
                 animator.SetTrigger("Die");
+                SetColliders(false);
+                attacker.ResetTarget(this);
+                RemoveSelfFromOtherAttacker();
                 if (meshAgent.enabled)
                 {
                         meshAgent.isStopped = true;
+                }
+                Invoke("DestoryUnit", 4);
+
+        }
+
+        /// <summary>
+        /// Destory the object after it's dead
+        /// </summary>
+        private void DestoryUnit()
+        {
+                Destroy(gameObject);
+        }
+
+        /// <summary>
+        /// Make other attackers remove this unit from their target list
+        /// (otherwise the attacker will keep attacking this unit even if it's dead)
+        /// </summary>
+        private void RemoveSelfFromOtherAttacker()
+        {
+                for (int i = 0; i < attackersList.Count; i++)
+                {
+                        attackersList[i].targetsList.Remove(this);
                 }
         }
 
