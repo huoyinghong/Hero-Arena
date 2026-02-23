@@ -228,6 +228,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4817517391243518457, guid: 0a7c0bc66d147e640a4fdc8d67270f42, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4817517391243518457, guid: 0a7c0bc66d147e640a4fdc8d67270f42, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 3.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 6700442445108336505, guid: 0a7c0bc66d147e640a4fdc8d67270f42, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6700442445108336505, guid: 0a7c0bc66d147e640a4fdc8d67270f42, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704541435223755518, guid: 0a7c0bc66d147e640a4fdc8d67270f42, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704541435223755518, guid: 0a7c0bc66d147e640a4fdc8d67270f42, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7803009127254916226, guid: 0a7c0bc66d147e640a4fdc8d67270f42, type: 3}
       propertyPath: m_Name
       value: Building Variant

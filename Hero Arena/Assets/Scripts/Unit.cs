@@ -20,7 +20,8 @@ public class Unit : MonoBehaviour
         public Unit defaultTarget;//Default target enemy base;
         public List<Unit> targetsList = new List<Unit>();//List of  units that is avaliable for this unit to attack(within the attack range)
         public List<Unit> attackersList = new List<Unit>();//List of  units that is attacking this unit
-        protected Collider[] colliders; 
+        protected Collider[] colliders;
+        protected HPSlider hpslider;
 
 
 
@@ -33,6 +34,11 @@ public class Unit : MonoBehaviour
                 GetComponentInChildren<SphereCollider>().radius = unitInfo.attackRange;
                 colliders = GetComponentsInChildren<Collider>();
                 currentHP = unitInfo.hp;
+                if (unitInfo.hp > 0)
+                {
+                        hpslider = transform.Find("Canvas_HP").GetComponent<HPSlider>();
+                        hpslider.SetHPColor(isOrange);
+                }
         }
 
         // Update is called once per frame
@@ -122,6 +128,7 @@ public class Unit : MonoBehaviour
         {
                 currentHP -= dmgValue;
                 Mathf.Clamp(currentHP, 0, unitInfo.hp);
+                hpslider.SetHPSliderValue((float)currentHP / unitInfo.hp);//update hp on slider
                 if (currentHP <= 0)
                 {
                         Die(attacker);
