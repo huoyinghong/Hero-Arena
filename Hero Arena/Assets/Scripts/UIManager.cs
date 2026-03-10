@@ -59,13 +59,13 @@ public class UIManager : MonoBehaviour
                 go.transform.localPosition = Vector3.zero;
 
                
-                int randomNum = Random.Range(1, 11);
+                int randomNum = Random.Range(2,2);
                 //Avoid generating the same card consecutively
-                while (cardIDList.Contains(randomNum))
-                {
-                        randomNum = Random.Range(1, 11);
-                }
-                cardIDList.Add(randomNum);
+                //while (cardIDList.Contains(randomNum))
+                //{
+                //        randomNum = Random.Range(1, 11);
+                //}
+                //cardIDList.Add(randomNum);
 
 
                 //Set card style

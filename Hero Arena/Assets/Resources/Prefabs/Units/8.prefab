@@ -233,7 +233,8 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Unit
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7983592541563121293, guid: 0a7c0bc66d147e640a4fdc8d67270f42, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2076810148899012552, guid: 0a7c0bc66d147e640a4fdc8d67270f42, type: 3}
@@ -242,8 +243,38 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2076810148899012552, guid: 0a7c0bc66d147e640a4fdc8d67270f42, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6411270112188489771}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7803009127254916226, guid: 0a7c0bc66d147e640a4fdc8d67270f42, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1914421250503912869}
   m_SourcePrefab: {fileID: 100100000, guid: 0a7c0bc66d147e640a4fdc8d67270f42, type: 3}
+--- !u!1 &850855006901049748 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7803009127254916226, guid: 0a7c0bc66d147e640a4fdc8d67270f42, type: 3}
+  m_PrefabInstance: {fileID: 7459935067479729430}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1914421250503912869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 850855006901049748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e39a06f214c1cab45943f9a41152d2f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Death
+  isOrange: 0
+  hasTarget: 0
+  currentHP: 0
+  isDead: 0
+  target: {fileID: 0}
+  animator: {fileID: 0}
+  meshAgent: {fileID: 0}
+  defaultTarget: {fileID: 0}
+  targetsList: []
+  attackersList: []
 --- !u!4 &8887093796460223198 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2076810148899012552, guid: 0a7c0bc66d147e640a4fdc8d67270f42, type: 3}

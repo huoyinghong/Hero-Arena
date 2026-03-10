@@ -33,8 +33,8 @@ public class GameController : MonoBehaviour
                     new UnitInfo(){ ID = 8, name = "Death", cost = 6, attackRange = 3, hp = 10, damage = 7, speed = 1},
                     new UnitInfo(){ ID = 9, name = "Plaguebringer", cost = 4, attackRange = 3, damage = 1, speed = 1, canCreateAnywhere = true},
                     new UnitInfo(){ ID = 10, name = "Fireball", cost = 4, attackRange = 4, damage = 3, speed = 18, canCreateAnywhere = true},
-                    new UnitInfo(){ ID = 11, name = "Shipwreck Monster", cost = 0, attackRange = 2, hp = 2, damage = 1, speed = 1},
-                    new UnitInfo(){ ID = 12, name = "Healing Aura", cost = 0, attackRange = 2f, damage = 2, speed = 18},
+                    new UnitInfo(){ ID = 11, name = "Skeletons", cost = 0, attackRange = 2, hp = 2, damage = 1, speed = 1},
+                    new UnitInfo(){ ID = 12, name = "Healing Aura", cost = 0, attackRange = 2f, damage = -2, speed = 18},
                     new UnitInfo(){ ID = 13, name = "Building", cost = 0, attackRange = 6, hp = 200, damage = 4, speed = 0},
 
                 };
@@ -98,7 +98,9 @@ public class GameController : MonoBehaviour
                         case 4:
                         case 5:
                         case 8:
+                        case 9:
                         case 11:
+                        case 12:
                                 Unit u1 = go.GetComponent<Unit>();
                                 u1.isOrange = isOrange;
                                 u1.unitInfo = unitInfos[id - 1];
@@ -111,6 +113,12 @@ public class GameController : MonoBehaviour
                                         u2.isOrange = isOrange;
                                         u2.unitInfo = unitInfos[id - 1];
                                 }
+                                break;
+                        case 10:
+                                MagicFire fireball = go.GetComponent<MagicFire>();
+                                fireball.targetPos = pos;
+                                fireball.isOrange = isOrange;
+                                fireball.unitInfo = unitInfos[id - 1];
                                 break;
 
                         default:
