@@ -23,7 +23,8 @@ public class Unit : MonoBehaviour
         protected Collider[] colliders;
         protected HPSlider hpslider;
 
-
+        public AudioClip attackClip;
+        public AudioClip dieClip;
 
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -139,6 +140,7 @@ public class Unit : MonoBehaviour
 
         protected virtual void Die(Unit attacker)
         {
+                GameManager.Instance.PlaySound(dieClip);
                 isDead = true;
                 animator.SetTrigger("Die");
                 SetColliders(false);
@@ -186,6 +188,7 @@ public class Unit : MonoBehaviour
                 {
                         target.TakeDamage(unitInfo.damage, this);//target loses hp
                 }
+                GameManager.Instance.PlaySound(attackClip);
         }
 
         /// <summary>

@@ -5,6 +5,9 @@ public class MagicFire : Unit
         private Vector3 moveSpeed;
         public GameObject explosion;
         public Vector3 targetPos;
+
+        public AudioClip useClip;
+        public AudioClip hitClip;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         protected override void Start()
     {
@@ -13,6 +16,7 @@ public class MagicFire : Unit
                 transform.position = startPos;
                 moveSpeed = (targetPos - startPos).normalized * unitInfo.speed;
                 SetColliders(false);
+                GameManager.Instance.PlaySound(useClip);
     }
 
     // Update is called once per frame
@@ -35,6 +39,7 @@ public class MagicFire : Unit
                         targetsList[i].TakeDamage(unitInfo.damage, this);
                 }
                 Instantiate(explosion,transform.position, Quaternion.identity);
+                GameManager.Instance.PlaySound(hitClip);
                 Destroy(gameObject);
         }
 }

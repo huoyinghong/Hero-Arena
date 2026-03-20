@@ -246,6 +246,8 @@ MonoBehaviour:
   attackersList: []
   timeVal: 0
   destoryTime: 3
+  damageClip: {fileID: 0}
+  healingClip: {fileID: 8300000, guid: 693e1ff5c30d2e64b89ee0da3a2c4e16, type: 3}
 --- !u!4 &6555116314300696573 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2076810148899012552, guid: 0a7c0bc66d147e640a4fdc8d67270f42, type: 3}

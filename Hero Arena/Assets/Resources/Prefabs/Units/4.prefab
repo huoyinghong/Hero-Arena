@@ -64,6 +64,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Unit
       objectReference: {fileID: 0}
+    - target: {fileID: 7983592541563121293, guid: 0a7c0bc66d147e640a4fdc8d67270f42, type: 3}
+      propertyPath: dieClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7b514460f0e0a9b498d64b88c787d720, type: 3}
+    - target: {fileID: 7983592541563121293, guid: 0a7c0bc66d147e640a4fdc8d67270f42, type: 3}
+      propertyPath: attackClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 84ff75cf5b080ee4290941c069b92425, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

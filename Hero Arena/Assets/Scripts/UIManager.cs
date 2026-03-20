@@ -21,11 +21,22 @@ public class UIManager : MonoBehaviour
         public Transform[] boardCardsTransform;
         public Transform boardTransform;
 
+        public GameObject endPanelGo;
+        public GameObject winPanelGo;
+        public GameObject losePanelGo;
+        public GameObject startPanelGo;
+        public GameObject muskPanelGo;
+
+        public AudioClip winClip;
+        public AudioClip loseClip;
+
 
         private void Awake()
         {
                 Instance = this;
                 CreateNewCard();
+                DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x, 11.9f, 2)
+                        .OnComplete(() => { startPanelGo.SetActive(false); });
         }
 
         // Update is called once per frame
@@ -59,13 +70,13 @@ public class UIManager : MonoBehaviour
                 go.transform.localPosition = Vector3.zero;
 
                
-                int randomNum = Random.Range(2,2);
+                int randomNum = Random.Range(1,11);
                 //Avoid generating the same card consecutively
-                //while (cardIDList.Contains(randomNum))
-                //{
-                //        randomNum = Random.Range(1, 11);
-                //}
-                //cardIDList.Add(randomNum);
+                while (cardIDList.Contains(randomNum))
+                {
+                        randomNum = Random.Range(1, 11);
+                }
+                cardIDList.Add(randomNum);
 
 
                 //Set card style
@@ -121,5 +132,43 @@ public class UIManager : MonoBehaviour
         public void RemoveCardIDFromList(int ID)//Remove used card from the list(line 60)
         {
                 cardIDList.Remove(ID);
+        }
+
+        public void GameOver(bool win)
+        {
+                DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x,
+                        12.71f, 0.5f).OnComplete(() => { OpenGameOverPanel(win); });
+
+        }
+
+        public void OpenGameOverPanel(bool win)
+        {
+                Time.timeScale = 0;
+                endPanelGo.SetActive(true);
+                if (win)
+                {
+                        GameManager.Instance.PlayMusic(winClip);
+                        winPanelGo.SetActive(true);//Show win panel
+                }
+                else
+                {
+                        GameManager.Instance.PlayMusic(loseClip);
+                        losePanelGo.SetActive(true);//Show lose panel
+                }
+        }
+
+        /// <summary>
+        /// Show or hide UI of undeployment area when dragging cards
+        /// </summary>
+        /// <param"></param>
+        public void ShowMuskPanel()
+        {
+                muskPanelGo.SetActive(true);
+                Invoke("CloseMuskPanel", 0.5f);
+        }
+
+        private void CloseMuskPanel()
+        {
+                muskPanelGo.SetActive(false);
         }
 }

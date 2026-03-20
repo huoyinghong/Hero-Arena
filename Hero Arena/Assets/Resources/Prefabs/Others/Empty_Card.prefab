@@ -554,6 +554,8 @@ MonoBehaviour:
   - {fileID: 3698004700819439322}
   - {fileID: 6600852926958486896}
   - {fileID: 7849169990839433704}
+  canCreateAnywhere: 0
+  useCardClip: {fileID: 8300000, guid: e7bcfd15ff74eba44bbd21f4e49a95b7, type: 3}
 --- !u!1 &8402678212309849444
 GameObject:
   m_ObjectHideFlags: 0

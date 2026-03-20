@@ -180,6 +180,8 @@ MonoBehaviour:
   attackersList: []
   explosion: {fileID: 2195371771608286992, guid: 005040f75ca9ba14593d32a0be16534d, type: 3}
   targetPos: {x: 0, y: 0, z: 0}
+  useClip: {fileID: 8300000, guid: d956d2cff178cfc4a8c89e48316e899d, type: 3}
+  hitClip: {fileID: 8300000, guid: 20adfabc9d418f240a0bab3e0b260f4a, type: 3}
 --- !u!4 &4683812791889988478 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2076810148899012552, guid: 0a7c0bc66d147e640a4fdc8d67270f42, type: 3}

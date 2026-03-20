@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
         public GameObject[] unitGOs; //All unit prefads
         public Building[] purpleBuildings;
         public Building[] orangeBuildings;
+        public AudioClip[] gameBGMusic;
 
         private void Awake()
         {
@@ -38,6 +39,8 @@ public class GameController : MonoBehaviour
                     new UnitInfo(){ ID = 13, name = "Building", cost = 0, attackRange = 6, hp = 200, damage = 4, speed = 0},
 
                 };
+
+                GameManager.Instance.PlayMusic(gameBGMusic[Random.Range(0,3)]);
         }
 
         // Update is called once per frame

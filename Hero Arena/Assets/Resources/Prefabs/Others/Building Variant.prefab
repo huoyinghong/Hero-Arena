@@ -320,6 +320,7 @@ MonoBehaviour:
   buildingGOs:
   - {fileID: 3141361847163740788}
   - {fileID: 3050127267366871438}
+  destoryClip: {fileID: 8300000, guid: 6a0ecf6d7fed0fe4d814d2f20b21a524, type: 3}
 --- !u!1001 &5021705549578356317
 PrefabInstance:
   m_ObjectHideFlags: 0

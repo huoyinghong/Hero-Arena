@@ -7,7 +7,7 @@ public class Building : Unit
         private float attackTimer;
         public Transform characterTrans;
         public GameObject[] buildingGOs;
-
+        public AudioClip destoryClip;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         protected override void Start()
@@ -57,9 +57,11 @@ public class Building : Unit
                 base.Die(attacker);
                 buildingGOs[0].SetActive(false);//Hide normal building image
                 buildingGOs[1].SetActive(true);// Display destoryed building image
+                GameManager.Instance.PlaySound(destoryClip);
                 if (isBase)
                 {
                         //If base has been destoryed then game over
+                        UIManager.Instance.GameOver(!isOrange);
                 }
                 else
                 {

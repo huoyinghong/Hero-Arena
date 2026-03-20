@@ -19,7 +19,9 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IB
         public Transform imgGold;
         public int posiID;//Card position id on on the board
         public GameObject[] modelGOs;//All unit models
+        public bool canCreateAnywhere;
 
+        public AudioClip useCardClip;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -41,6 +43,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IB
                 else
                 {
                         spellCastingRange.SetActive(false);
+                        canCreateAnywhere = GameController.Instance.unitInfos[ID - 1].canCreateAnywhere;
                 }
 
         }
@@ -152,6 +155,15 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IB
                         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
                         RaycastHit[] hits = Physics.RaycastAll(ray);
 
+
+                        if(!canCreateAnywhere && hits[0].collider.tag == "CantClick")
+                        {//if the card is a magic card skip this
+                                RetunToInitPosi();
+                                UIManager.Instance.ShowMuskPanel();//if the card is the unit show undeployment area
+                                return;
+                        }
+                        GameManager.Instance.PlaySound(useCardClip);
+
                         imgGold.DOLocalMove(imgGold.localPosition + new Vector3(0, 50, 0), 0.5f)
                                 .OnComplete(() => { UseCurrentCard(hits); });
                 }
@@ -175,7 +187,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IB
 
 
         /// <summary>
-        /// Return the card to its initial position when not used.
+        /// Return the card to its initial position on UI board when not used.
         /// </summary>
         private void RetunToInitPosi()
         {

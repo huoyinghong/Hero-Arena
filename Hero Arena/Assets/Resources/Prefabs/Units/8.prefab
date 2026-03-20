@@ -275,6 +275,9 @@ MonoBehaviour:
   defaultTarget: {fileID: 0}
   targetsList: []
   attackersList: []
+  attackClip: {fileID: 8300000, guid: 667216ab2ef67a249b25644b8d97d8a2, type: 3}
+  dieClip: {fileID: 8300000, guid: 06e8682e4ed0f274699b47180a634d37, type: 3}
+  callSkeletonclip: {fileID: 8300000, guid: 064b58c9639736443a43cf66f594d2bf, type: 3}
 --- !u!4 &8887093796460223198 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2076810148899012552, guid: 0a7c0bc66d147e640a4fdc8d67270f42, type: 3}

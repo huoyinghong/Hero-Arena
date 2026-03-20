@@ -265,6 +265,10 @@ PrefabInstance:
       propertyPath: hasTarget
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7983592541563121293, guid: 0a7c0bc66d147e640a4fdc8d67270f42, type: 3}
+      propertyPath: attackClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 528151de8de32064bb7715b0dc3f4ce2, type: 3}
     - target: {fileID: 8122190699018546498, guid: 0a7c0bc66d147e640a4fdc8d67270f42, type: 3}
       propertyPath: m_IsKinematic
       value: 1

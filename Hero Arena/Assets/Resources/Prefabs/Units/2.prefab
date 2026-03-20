@@ -275,6 +275,8 @@ MonoBehaviour:
   defaultTarget: {fileID: 0}
   targetsList: []
   attackersList: []
+  attackClip: {fileID: 0}
+  dieClip: {fileID: 8300000, guid: caf982062d3709543acd73010f70fd4a, type: 3}
   ball: {fileID: 4782481760646476125, guid: 9f9d4159394a1504b804861f48939af4, type: 3}
 --- !u!4 &8894001182345886058 stripped
 Transform:
