@@ -161,6 +161,13 @@ public class GameController : MonoBehaviour
 
         public void EnableBase(bool isOrange)
         {
-
+                if (isOrange)
+                {
+                        orangeBuildings[0].SetColliders(true);
+                }
+                else
+                {
+                        purpleBuildings[0].SetColliders(true);
+                }
         }
 }

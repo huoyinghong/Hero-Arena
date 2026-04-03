@@ -362,6 +362,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   audioSource: {fileID: 377517886}
+  battleCardsList: 0100000002000000030000000400000005000000060000000700000008000000
+  allCardsList: 09000000
+  btnSound: {fileID: 8300000, guid: 0ba8af14a2118554e91283fc793e0105, type: 3}
 --- !u!4 &377517885
 Transform:
   m_ObjectHideFlags: 0
@@ -796,7 +799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 099d184b6d19b3e4d9cb9e1a3b55a69d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gamestater
-  audioClip: {fileID: 8300000, guid: 4b5dcfedd53e8d74597b6abb3122a679, type: 3}
+  audioClip: {fileID: 8300000, guid: 05ed0634adf3fa54898872bd3270a06d, type: 3}
 --- !u!1 &2126820696
 GameObject:
   m_ObjectHideFlags: 0

@@ -146,9 +146,13 @@ public class Unit : MonoBehaviour
                 SetColliders(false);
                 attacker.ResetTarget(this);
                 RemoveSelfFromOtherAttacker();
-                if (meshAgent.enabled)
+                hpslider.gameObject.SetActive(false);
+                if (meshAgent)
                 {
-                        meshAgent.isStopped = true;
+                        if (meshAgent.enabled)
+                        {
+                                meshAgent.isStopped = true;
+                        }
                 }
                 Invoke("DestoryUnit", 4);
 
@@ -282,7 +286,7 @@ public class Unit : MonoBehaviour
         /// Enable or disable unit's collider
         /// </summary>
         /// <param name="state"></param>
-        protected void SetColliders(bool state)
+        public void SetColliders(bool state)
         {
                 for (int i = 0; i < colliders.Length; i++)
                 {
