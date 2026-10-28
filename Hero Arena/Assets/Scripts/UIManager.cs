@@ -103,6 +103,7 @@ public class UIManager : MonoBehaviour
         {
                 Transform t = nextCardTransform.GetChild(0);
                 t.SetParent(boardTransform);
+
                 t.DOScale(Vector3.one * 1.1f, 0.2f);
                 t.GetComponent<Card>().posiID = posID;
 
@@ -125,11 +126,11 @@ public class UIManager : MonoBehaviour
         /// <param name="posID">Which card on the board is used</param>
         public void UseCard(int posID)
         {
-                currentCardNum -= 1;
+                currentCardNum -= 1;//NUmber of cards on board -1
                 MoveCardToBoard(posID);
         }
 
-        public void RemoveCardIDFromList(int ID)//Remove used card from the list(line 60)
+        public void RemoveCardIDFromList(int ID)//Remove used card from the list
         {
                 cardIDList.Remove(ID);
         }

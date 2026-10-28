@@ -78,7 +78,6 @@ public class MainUIManager : MonoBehaviour
                                 freeBattlePosIndexList.Add(i);
                         }
                 }
-                //¿¨ÅÆ¶Ñ
                 for (int i = 0; i < GameManager.Instance.allCardsList.Count; i++)
                 {
                         GameObject go = Instantiate(cardBtnGo, panelCardGo.transform);

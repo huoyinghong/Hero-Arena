@@ -42,7 +42,6 @@ public class Unit : MonoBehaviour
                 }
         }
 
-        // Update is called once per frame
         protected virtual void UnitMove()
         {
                 //if the unit has target
@@ -79,7 +78,7 @@ public class Unit : MonoBehaviour
         /// <param name="targetPosi"></param>
         public void ReachTarget(Vector3 currentPosi, Vector3 targetPosi)
         {
-                if (Vector3.Distance(currentPosi, targetPosi) >= unitInfo.attackRange)//if the target is not in the attackRange
+                if (Vector3.Distance(currentPosi, targetPosi) >= unitInfo.attackRange)//if the target is not in attackRange yet
                 {
                         UnitBehaviour();
                 }
@@ -109,7 +108,7 @@ public class Unit : MonoBehaviour
         }
 
 
-        protected virtual void UnitBehaviour()
+        protected virtual void UnitBehaviour()//move to target
         {
                 if (meshAgent.enabled)
                 {
